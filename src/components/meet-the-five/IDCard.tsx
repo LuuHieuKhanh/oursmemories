@@ -84,7 +84,7 @@ export function IDCard({ friend, index, total, hoveredId, setHoveredId, onClick,
       {/* Portrait */}
       <div className="w-[160px] h-[200px] mt-8 rounded-[16px] overflow-hidden flex items-center justify-center relative">
         {friend.imageSrc ? (
-          <img src={friend.imageSrc} alt={friend.name} className="w-full h-full object-cover filter grayscale" />
+          <img src={friend.imageSrc} alt={friend.name} className="w-full h-full object-cover" />
         ) : (
           <span className="text-secondary opacity-30 font-medium">NO PHOTO</span>
         )}
