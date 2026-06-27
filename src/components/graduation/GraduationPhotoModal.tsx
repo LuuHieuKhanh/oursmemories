@@ -75,10 +75,10 @@ export function GraduationPhotoModal({ friendIndex, isOpen, onClose, onNavigate 
                 <X size={20} strokeWidth={2} />
               </button>
               <div className="w-full aspect-[3/4] bg-background-secondary rounded-[16px] overflow-hidden flex items-center justify-center shadow-inner">
-                 {friend.imageSrc ? (
-                    <img src={friend.imageSrc} alt="" className="w-full h-full object-cover" />
+                 {friend.graduationPhotoUrl ? (
+                    <img src={friend.graduationPhotoUrl} alt="" className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-caption text-sm uppercase tracking-widest font-medium">Portrait</span>
+                    <span className="text-caption text-sm uppercase tracking-widest font-medium">No Photo</span>
                   )}
               </div>
 
