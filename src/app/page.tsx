@@ -9,6 +9,8 @@ import { EndingSection } from "@/components/ending/EndingSection";
 import { DataProvider } from "@/lib/DataProvider";
 import { getFriendsData, getGalleryPhotos } from "@/lib/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const friendsData = await getFriendsData();
   const galleryData = await getGalleryPhotos();
