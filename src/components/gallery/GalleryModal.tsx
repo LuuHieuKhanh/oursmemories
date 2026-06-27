@@ -61,7 +61,7 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
   return (
     <AnimatePresence>
       {isOpen && photo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-6 lg:p-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-2 lg:p-4">
           <motion.div
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
