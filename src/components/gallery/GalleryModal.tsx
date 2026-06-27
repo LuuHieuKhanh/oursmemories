@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect } from "react";
+import { X, ChevronLeft, ChevronRight, Send } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useData } from "@/lib/DataProvider";
+import { supabase } from "@/lib/supabase";
 
 interface Props {
   photoIndex: number | null;
@@ -13,8 +14,11 @@ interface Props {
 }
 
 export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props) {
-  const { gallery } = useData();
+  const { friends, gallery } = useData();
   const photo = photoIndex !== null ? gallery[photoIndex] : null;
+  const [commentText, setCommentText] = useState("");
+  const [selectedUser, setSelectedUser] = useState(friends[0]?.name || "");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Listen to keyboard for navigation
   useEffect(() => {
@@ -34,6 +38,25 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, photoIndex, gallery.length, onNavigate, onClose]);
 
+  const handleAddComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!commentText.trim() || !photo) return;
+    
+    setIsSubmitting(true);
+    const { error } = await supabase.from('comments').insert({
+      image_id: photo.id,
+      author_name: selectedUser,
+      content: commentText.trim()
+    });
+    
+    if (error) {
+      console.error(error);
+      alert("Failed to add comment.");
+    } else {
+      window.location.reload(); // Simple refresh to show new comment
+    }
+    setIsSubmitting(false);
+  };
 
   return (
     <AnimatePresence>
@@ -97,9 +120,10 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
               >
                 <X size={24} strokeWidth={1.5} />
               </button>
-              <div className="flex-1 p-6 lg:p-10 pt-8 lg:pt-12 flex flex-col justify-center">
+
+              <div className="flex-1 overflow-y-auto scrollbar-hide p-6 lg:p-10 pt-8 lg:pt-12">
                 {/* Header Info */}
-                <div className="pb-8">
+                <div className="mb-10 pb-8 border-b border-divider">
                   <div className="inline-block px-3 py-1 rounded-full bg-background-secondary text-[10px] uppercase tracking-widest text-caption font-medium mb-4">
                     {photo.category}
                   </div>
@@ -111,7 +135,67 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
                     <span>{photo.date}</span>
                   </div>
                 </div>
+
+                {/* Comments List */}
+                <div className="flex flex-col gap-6 mb-8">
+                  <h4 className="font-heading text-xs uppercase tracking-widest text-primary font-medium">Memories ({photo.comments.length})</h4>
+                  
+                  {photo.comments.length === 0 ? (
+                    <div className="py-12 flex flex-col items-center justify-center text-caption italic border border-dashed border-divider rounded-[16px]">
+                      <span className="text-2xl mb-2 opacity-50">✍️</span>
+                      <span className="text-sm">No memories shared yet.</span>
+                    </div>
+                  ) : (
+                    photo.comments.map((comment) => (
+                      <div key={comment.id} className="bg-[#FAF7F2] p-5 rounded-[16px] border border-black/5 shadow-sm">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-8 h-8 rounded-full bg-white border border-divider flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                             <span className="text-[10px] uppercase font-bold text-primary">{comment.author.charAt(0)}</span>
+                          </div>
+                          <div className="flex flex-col">
+                             <span className="font-bold text-primary text-sm">{comment.author}</span>
+                             <span className="text-[10px] text-caption font-medium">{comment.date}</span>
+                          </div>
+                        </div>
+                        <p className="text-secondary text-sm leading-relaxed">{comment.text}</p>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
+
+              {/* Comment Input */}
+              <form onSubmit={handleAddComment} className="p-6 lg:p-8 bg-white border-t border-divider shrink-0">
+                <div className="flex flex-col gap-4">
+                  <div className="flex gap-2">
+                     <select 
+                        value={selectedUser}
+                        onChange={(e) => setSelectedUser(e.target.value)}
+                        className="text-xs bg-background-secondary border border-divider rounded-[8px] px-3 py-2 text-primary font-medium focus:outline-none"
+                     >
+                       {friends.map(f => (
+                         <option key={f.id} value={f.name}>{f.name}</option>
+                       ))}
+                     </select>
+                  </div>
+                  <div className="relative flex items-center">
+                    <input 
+                      type="text" 
+                      value={commentText}
+                      onChange={(e) => setCommentText(e.target.value)}
+                      placeholder="Write what you remember..."
+                      className="w-full bg-background-secondary border border-divider rounded-full pl-5 pr-14 py-3.5 text-sm focus:outline-none focus:border-black/20 transition-colors"
+                    />
+                    <button 
+                        type="submit"
+                        disabled={isSubmitting || !commentText.trim()}
+                        className="absolute right-2 p-2 rounded-full bg-primary text-white hover:bg-black transition-colors shadow-sm disabled:opacity-50"
+                    >
+                       <Send size={16} />
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </motion.div>
         </div>
