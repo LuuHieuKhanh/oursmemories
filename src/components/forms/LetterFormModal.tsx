@@ -23,7 +23,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!authorName || !content.trim()) {
-      alert("Please select your name and write something.");
+      alert("Vui lòng chọn tên và viết nội dung thư.");
       return;
     }
     
@@ -37,7 +37,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
       });
 
     if (error) {
-      alert("Error saving letter. Please try again.");
+      alert("Lỗi khi lưu thư. Vui lòng thử lại.");
       console.error(error);
     } else {
       window.location.reload(); // Quick way to refresh data
@@ -66,7 +66,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
               <div className="flex justify-between items-center px-8 pt-8 pb-4 shrink-0 gap-4 border-b border-transparent">
                 {/* Left: Title */}
                 <h3 className="font-heading text-xl md:text-2xl text-primary font-bold whitespace-nowrap shrink-0">
-                  Write a Letter
+                  Viết thư
                 </h3>
 
                 {/* Middle: Controls */}
@@ -79,7 +79,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
                           onChange={(e) => setAuthorName(e.target.value)}
                           className="w-full h-10 pl-5 pr-8 bg-background border-2 border-black/5 hover:border-black/10 focus:border-primary rounded-full outline-none appearance-none transition-all cursor-pointer font-heading font-medium text-base text-primary shadow-sm"
                         >
-                          <option value="" disabled>Name</option>
+                          <option value="" disabled>Tên</option>
                           {availableFriends.map(f => (
                             <option key={f.id} value={f.name}>{f.name}</option>
                           ))}
@@ -95,7 +95,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
                         type="submit" 
                         disabled={isSaving}
                         className="w-10 h-10 shrink-0 bg-primary text-white rounded-full flex justify-center items-center hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
-                        title="Send Letter"
+                        title="Gửi thư"
                       >
                         {isSaving ? <Loader2 size={18} className="animate-spin" /> : <Send size={16} className="-ml-0.5 mt-0.5" />}
                       </button>
@@ -112,7 +112,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
               <div className="px-8 pb-8 pt-2 flex flex-col h-full">
                 {availableFriends.length === 0 ? (
                   <div className="py-16 w-full text-center text-secondary">
-                    Everyone has already written a letter!
+                    Mọi người đều đã viết thư rồi!
                   </div>
                 ) : (
                   <div className="flex-1 flex flex-col h-full">
@@ -122,7 +122,7 @@ export function LetterFormModal({ isOpen, onClose }: Props) {
                       <textarea 
                         value={content} 
                         onChange={(e) => setContent(e.target.value)} 
-                        placeholder="Dear friends... (Write your letter here)" 
+                        placeholder="Chào các bạn... (Viết thư của bạn ở đây)" 
                         rows={14} 
                         className="relative z-10 w-full h-full bg-transparent outline-none resize-none font-handwriting text-2xl md:text-3xl leading-[32px] text-primary placeholder:text-primary/30" 
                       />

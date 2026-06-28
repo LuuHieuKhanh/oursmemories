@@ -85,7 +85,7 @@ export function IDCardModal({ friendId, isOpen, onClose }: IDCardModalProps) {
                    {friend.imageSrc ? (
                     <img src={friend.imageSrc} alt={friend.name} className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-caption text-sm uppercase tracking-widest">Portrait</span>
+                    <span className="text-caption text-sm uppercase tracking-widest">Chân dung</span>
                   )}
                 </div>
               </div>
@@ -94,7 +94,7 @@ export function IDCardModal({ friendId, isOpen, onClose }: IDCardModalProps) {
                 <div className="w-8 h-8 mx-auto mb-1.5 border-2 border-primary/10 rounded-full flex items-center justify-center opacity-60">
                   <span className="font-heading text-sm">🎓</span>
                 </div>
-                <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-secondary">Memories Collection</p>
+                <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-secondary">Bộ sưu tập kỷ niệm</p>
                 <p className="text-[9px] uppercase tracking-[0.2em] text-caption">2022–2026</p>
               </div>
 
@@ -126,14 +126,14 @@ export function IDCardModal({ friendId, isOpen, onClose }: IDCardModalProps) {
               >
                 <div className="flex items-center gap-4 mb-3">
                   <h4 className="font-heading text-xs uppercase tracking-widest text-caption">
-                    Hall of Fame
+                    Biệt danh
                   </h4>
                   <div className="h-[1px] flex-1 bg-divider" />
                   <button 
                     onClick={() => setIsAddingHof(!isAddingHof)}
                     className="text-[11px] px-3 py-1 rounded-full bg-primary/10 text-primary font-medium hover:bg-primary/20 transition-colors"
                   >
-                    {isAddingHof ? "Cancel" : "+ Add"}
+                    {isAddingHof ? "Hủy" : "+ Thêm"}
                   </button>
                 </div>
                 
@@ -146,20 +146,20 @@ export function IDCardModal({ friendId, isOpen, onClose }: IDCardModalProps) {
                       onSubmit={handleAddHof} 
                       className="mb-3 p-3 rounded-xl bg-black/5 flex flex-col gap-2 overflow-hidden"
                     >
-                      <input type="text" placeholder="Nickname..." value={hofNickname} onChange={e => setHofNickname(e.target.value)} required className="px-3 py-1 text-sm bg-white border border-transparent focus:border-black/20 rounded-lg outline-none" />
+                      <input type="text" placeholder="Nhập biệt danh..." value={hofNickname} onChange={e => setHofNickname(e.target.value)} required className="px-3 py-1 text-sm bg-white border border-transparent focus:border-black/20 rounded-lg outline-none" />
                       <select 
                         value={hofGiver} 
                         onChange={e => setHofGiver(e.target.value)} 
                         required 
                         className="px-3 py-1 text-sm bg-white border border-transparent focus:border-black/20 rounded-lg outline-none cursor-pointer"
                       >
-                        <option value="" disabled>Select who gave this...</option>
+                        <option value="" disabled>Ai đã đặt biệt danh này...</option>
                         {friends.filter(f => f.id !== friend.id).map(f => (
                           <option key={f.id} value={f.name}>{f.name}</option>
                         ))}
                       </select>
                       <button type="submit" disabled={isSubmitting} className="w-full py-1.5 mt-1 bg-primary text-white text-sm font-medium rounded-lg disabled:opacity-50 hover:bg-primary/90 transition-colors">
-                        {isSubmitting ? "Saving..." : "Save Nickname"}
+                        {isSubmitting ? "Đang lưu..." : "Lưu biệt danh"}
                       </button>
                     </motion.form>
                   )}
@@ -175,7 +175,7 @@ export function IDCardModal({ friendId, isOpen, onClose }: IDCardModalProps) {
                       className="bg-background-secondary/80 rounded-lg p-2 border border-black/5 flex flex-col justify-center"
                     >
                       <span className="font-bold text-primary text-[13px]">{hof.nickname}</span>
-                      <span className="text-[10px] text-caption mt-0.5 italic">— By {hof.giver}</span>
+                      <span className="text-[10px] text-caption mt-0.5 italic">— Đặt bởi {hof.giver}</span>
                     </motion.div>
                   ))}
                 </div>

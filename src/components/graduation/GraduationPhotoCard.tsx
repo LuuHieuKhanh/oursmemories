@@ -58,14 +58,14 @@ export function GraduationPhotoCard({ friend, index, onClick, isHovered, onHover
                <div className="w-16 h-16 rounded-full bg-black/10 flex items-center justify-center mb-3">
                  <span className="text-secondary/50 text-2xl font-serif">{friend.name[0]}</span>
                </div>
-               <span className="text-secondary/40 font-medium text-sm tracking-wide">NO PHOTO</span>
+               <span className="text-secondary/40 font-medium text-sm tracking-wide">CHƯA CÓ ẢNH</span>
             </div>
           )}
           
           <button 
             onClick={(e) => { e.stopPropagation(); onEdit(e); }}
             className="absolute bottom-4 right-4 p-2 bg-primary text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-20 shadow-lg hover:scale-110"
-            title="Upload Graduation Photo"
+            title="Tải ảnh lên"
           >
             <Plus size={16} strokeWidth={3} />
           </button>

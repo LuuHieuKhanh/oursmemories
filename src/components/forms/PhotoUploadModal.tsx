@@ -12,7 +12,7 @@ interface Props {
   onClose: () => void;
 }
 
-const CATEGORIES = ["Film", "Digital", "Event", "Polaroid"];
+const CATEGORIES = ["Film", "Kỹ thuật số", "Sự kiện", "Polaroid"];
 
 export function PhotoUploadModal({ isOpen, onClose }: Props) {
   const { friends } = useData();
@@ -24,7 +24,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
   
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Digital");
+  const [category, setCategory] = useState("Kỹ thuật số");
   const [uploader, setUploader] = useState("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +38,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file || !title || !uploader) {
-      alert("Please fill all required fields and select an image.");
+      alert("Vui lòng điền đủ thông tin và chọn ảnh.");
       return;
     }
     
@@ -48,7 +48,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
     const imageUrl = await uploadImage(file, 'gallery');
     
     if (!imageUrl) {
-      alert("Failed to upload image.");
+      alert("Tải ảnh lên thất bại.");
       setIsSaving(false);
       setIsUploading(false);
       return;
@@ -72,7 +72,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
       });
 
     if (error) {
-      alert("Error saving photo info. Please try again.");
+      alert("Lỗi khi lưu ảnh. Vui lòng thử lại.");
       console.error(error);
     } else {
       window.location.reload(); 
@@ -100,7 +100,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
             className="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden z-10"
           >
             <div className="flex justify-between items-center py-3 px-5 border-b border-black/5">
-              <h3 className="font-heading text-xl text-primary">Upload Photo</h3>
+              <h3 className="font-heading text-xl text-primary">Tải ảnh lên</h3>
               <button onClick={onClose} className="p-2 text-secondary hover:text-primary bg-black/5 rounded-full">
                 <X size={20} />
               </button>
@@ -110,14 +110,14 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
               
               {/* LEFT: Image Picker */}
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-sm font-medium text-secondary">Photo Upload</label>
+                <label className="text-sm font-medium text-secondary">Tải ảnh</label>
                 <div className="flex flex-col gap-4 h-full">
                   {previewUrl ? (
                     <div className="relative w-full h-full min-h-[240px] group">
                       <img src={previewUrl} alt="Preview" className="w-full h-full rounded-xl object-cover border" />
                       <label className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl cursor-pointer">
                          <span className="text-white font-medium flex items-center gap-2">
-                           <Upload size={18} /> Change Photo
+                           <Upload size={18} /> Đổi ảnh
                          </span>
                          <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} disabled={isSaving} />
                       </label>
@@ -125,7 +125,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
                   ) : (
                     <label className="w-full h-full min-h-[240px] flex flex-col items-center justify-center gap-3 py-4 border-2 border-dashed border-black/20 rounded-xl cursor-pointer hover:bg-black/5 transition-colors">
                       <Upload size={32} className="text-secondary opacity-50" />
-                      <span className="text-sm text-secondary font-medium">Click to select photo</span>
+                      <span className="text-sm text-secondary font-medium">Nhấn để chọn ảnh</span>
                       <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} disabled={isSaving} />
                     </label>
                   )}
@@ -136,30 +136,30 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
               <div className="flex-1 flex flex-col gap-5 justify-between">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Title *</label>
-                    <input required type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="A moment to remember..." className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
+                    <label className="text-sm font-medium text-secondary">Tiêu đề *</label>
+                    <input required type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Một khoảnh khắc đáng nhớ..." className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-secondary">Category</label>
+                      <label className="text-sm font-medium text-secondary">Phân loại</label>
                       <select value={category} onChange={(e) => setCategory(e.target.value)} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none">
                         {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-secondary">Uploaded By *</label>
+                      <label className="text-sm font-medium text-secondary">Tải lên bởi *</label>
                       <select required value={uploader} onChange={(e) => setUploader(e.target.value)} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none">
-                        <option value="" disabled>Select</option>
+                        <option value="" disabled>Chọn</option>
                         {friends.map(f => <option key={f.id} value={f.name}>{f.name}</option>)}
                       </select>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2 h-full">
-                    <label className="text-sm font-medium text-secondary">Description</label>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Where was this? What were we doing?" rows={4} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none resize-none flex-1" />
+                    <label className="text-sm font-medium text-secondary">Mô tả</label>
+                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Ảnh này ở đâu? Chúng mình đang làm gì?" rows={4} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none resize-none flex-1" />
                   </div>
                 </div>
 
@@ -169,7 +169,7 @@ export function PhotoUploadModal({ isOpen, onClose }: Props) {
                   className="w-full py-2.5 mt-2 bg-primary text-white rounded-xl font-medium flex justify-center items-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-50"
                 >
                   {isSaving ? <Loader2 size={18} className="animate-spin" /> : null}
-                  {isUploading ? "Uploading..." : "Save Photo"}
+                  {isUploading ? "Đang tải lên..." : "Lưu ảnh"}
                 </button>
               </div>
             </form>

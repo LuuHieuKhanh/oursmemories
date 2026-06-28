@@ -127,7 +127,7 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
                   <h3 className="font-heading text-2xl md:text-3xl font-bold text-primary mb-2 leading-tight">{photo.title}</h3>
                   <p className="text-secondary/90 leading-relaxed mb-3">{photo.description}</p>
                   <div className="flex items-center gap-2 text-xs text-caption">
-                    <span>Uploaded by <strong>{photo.uploader}</strong></span>
+                    <span>Tải lên bởi <strong>{photo.uploader}</strong></span>
                     <span>•</span>
                     <span>{photo.date}</span>
                   </div>
@@ -135,12 +135,12 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
 
                 {/* Comments List */}
                 <div className="flex flex-col gap-4 mb-4">
-                  <h4 className="font-heading text-xs uppercase tracking-widest text-primary font-medium">Comments ({photo.comments.length})</h4>
+                  <h4 className="font-heading text-xs uppercase tracking-widest text-primary font-medium">Bình luận ({photo.comments.length})</h4>
                   
                   {photo.comments.length === 0 ? (
                     <div className="py-8 flex flex-col items-center justify-center text-caption italic border border-dashed border-divider rounded-[16px]">
                       <span className="text-2xl mb-2 opacity-50">✍️</span>
-                      <span className="text-sm">No comments yet.</span>
+                      <span className="text-sm">Chưa có bình luận nào.</span>
                     </div>
                   ) : (
                     photo.comments.map((comment) => (
@@ -175,7 +175,7 @@ export function GalleryModal({ photoIndex, isOpen, onClose, onNavigate }: Props)
                      type="text" 
                      value={commentText}
                      onChange={(e) => setCommentText(e.target.value)}
-                     placeholder="Write a comment..."
+                     placeholder="Viết bình luận..."
                      className="flex-1 bg-background-secondary border border-divider rounded-full px-5 py-3.5 text-sm focus:outline-none focus:border-black/20 transition-colors"
                    />
                    

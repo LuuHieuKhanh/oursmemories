@@ -86,13 +86,13 @@ export function IDCard({ friend, index, total, hoveredId, setHoveredId, onClick,
         {friend.imageSrc ? (
           <img src={friend.imageSrc} alt={friend.name} className="w-full h-full object-cover" />
         ) : (
-          <span className="text-secondary opacity-30 font-medium">NO PHOTO</span>
+          <span className="text-secondary opacity-30 font-medium">CHƯA CÓ ẢNH</span>
         )}
         
         <button 
           onClick={onEdit}
           className="absolute bottom-2 right-2 p-2 bg-primary text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-20 shadow-md hover:scale-110"
-          title="Edit Profile"
+          title="Chỉnh sửa"
         >
           <Plus size={16} strokeWidth={3} />
         </button>

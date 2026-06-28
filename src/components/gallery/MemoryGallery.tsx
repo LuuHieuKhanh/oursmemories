@@ -16,9 +16,9 @@ export function MemoryGallery() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const filterCategories = ["All", "Khánh", "Nuyên", "Ngân", "Linh", "Châu"];
+  const filterCategories = ["Tất cả", "Khánh", "Nguyên", "Ngân", "Linh", "Châu"];
 
-  const filteredPhotos = activeCategory === "All" 
+  const filteredPhotos = activeCategory === "Tất cả" 
     ? gallery 
     : gallery.filter(p => p.uploader === activeCategory);
 
@@ -31,11 +31,11 @@ export function MemoryGallery() {
         
         <div className="text-center flex flex-col items-center">
           <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight">
-            Memory Gallery
+            Thư viện Kỷ niệm
           </h2>
           <p className="mt-3 text-secondary/80 text-lg md:text-xl leading-relaxed">
-            Every ordinary moment <br className="md:hidden" />
-            became an unforgettable memory.
+            Mỗi khoảnh khắc bình dị <br className="md:hidden" />
+            đều trở thành kỷ niệm khó quên.
           </p>
         </div>
 
@@ -44,7 +44,7 @@ export function MemoryGallery() {
             onClick={() => setIsUploadOpen(true)}
             className="px-5 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-full transition-all flex items-center gap-2 text-sm font-medium shadow-sm hover:shadow-md whitespace-nowrap"
           >
-            <Plus size={18} strokeWidth={2.5} /> Add a Memory
+            <Plus size={18} strokeWidth={2.5} /> Thêm ảnh
           </button>
           
           {filteredPhotos.length > 8 && (
@@ -52,7 +52,7 @@ export function MemoryGallery() {
               onClick={() => setIsCollapsed(!isCollapsed)}
               className="px-4 py-2.5 bg-black/5 hover:bg-black/10 text-primary rounded-full transition-colors text-sm font-medium whitespace-nowrap"
             >
-              {isCollapsed ? "Expand" : "Collapse"}
+              {isCollapsed ? "Xem thêm" : "Thu gọn"}
             </button>
           )}
         </div>
@@ -109,7 +109,7 @@ export function MemoryGallery() {
             ) : (
               <div className="w-full flex flex-col items-center justify-center py-20 opacity-60">
                 <span className="text-6xl mb-4">📷</span>
-                <p className="text-xl text-primary font-medium tracking-wide">No memory, create more</p>
+                <p className="text-xl text-primary font-medium tracking-wide">Chưa có ảnh nào, hãy tạo thêm nhé</p>
               </div>
             )}
           </motion.div>

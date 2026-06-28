@@ -28,7 +28,7 @@ export function GalleryPhoto({ photo, index, onClick }: Props) {
           ) : (
              <div className="w-full h-full flex flex-col items-center justify-center bg-background-secondary border border-black/5 transition-transform duration-500 group-hover:scale-[1.03] group-hover:brightness-105">
                 <span className="text-3xl opacity-30 mb-2">📷</span>
-                <span className="text-caption text-[10px] uppercase tracking-widest">{photo.category} placeholder</span>
+                <span className="text-caption text-[10px] uppercase tracking-widest">Ảnh trống</span>
              </div>
           )}
 

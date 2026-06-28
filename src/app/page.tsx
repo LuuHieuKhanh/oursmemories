@@ -25,12 +25,12 @@ export default async function Home() {
           <BalloonsList />
           
           <h1 className="font-heading text-5xl md:text-7xl font-bold tracking-tight text-primary mt-16 md:mt-20 text-center">
-            Our story begins here
+            Câu chuyện bắt đầu từ đây
             <span className="block text-3xl md:text-[44px] mt-1 font-normal text-secondary">2022 — 2026</span>
           </h1>
           
           <p className="mt-4 text-[14px] md:text-base text-secondary/80 leading-relaxed max-w-2xl text-center">
-            Five friends. Four unforgettable years. One story worth remembering.
+            Năm người bạn. Bốn năm thanh xuân. Một câu chuyện đáng nhớ.
           </p>
         </div>
       </section>

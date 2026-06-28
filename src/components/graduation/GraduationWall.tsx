@@ -24,10 +24,10 @@ export function GraduationWall() {
       />
 
       <div className="text-center mb-6 md:mb-8 z-10 relative">
-        <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight">Graduation Wall</h2>
+        <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight">Góc Lễ Phục</h2>
         <p className="mt-4 text-secondary/80 text-lg md:text-xl leading-relaxed">
-          Different days. <br />
-          The same destination.
+          Những ngày khác biệt. <br />
+          Cùng chung đích đến.
         </p>
       </div>
 

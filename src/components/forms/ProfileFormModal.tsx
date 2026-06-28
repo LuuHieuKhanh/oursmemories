@@ -77,7 +77,7 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
       .eq("id", friend.id);
 
     if (error) {
-      alert("Error updating profile. Please try again.");
+      alert("Lỗi khi cập nhật hồ sơ. Vui lòng thử lại.");
       console.error(error);
     } else {
       window.location.reload(); // Quick way to refresh data
@@ -104,7 +104,7 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
           >
             <div className="flex justify-between items-center py-3 px-5 border-b border-black/5">
               <h3 className="font-heading text-xl text-primary">
-                Update {friend.name}'s {context === "profile" ? "Profile" : "Graduation Info"}
+                Cập nhật {context === "profile" ? "Hồ sơ" : "Lễ Phục"} của {friend.name}
               </h3>
               <button onClick={onClose} className="p-2 text-secondary hover:text-primary bg-black/5 rounded-full">
                 <X size={20} />
@@ -116,30 +116,30 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                 <div className="flex flex-col gap-5 w-full">
                   {/* Avatar Upload */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Avatar Photo</label>
+                    <label className="text-sm font-medium text-secondary">Ảnh đại diện</label>
                     <div className="flex items-center gap-4">
                       {avatarUrl && <img src={avatarUrl} alt="Avatar" className="w-16 h-16 rounded-full object-cover border" />}
                       <label className="flex-1 flex items-center justify-center gap-2 py-3 border border-dashed border-black/20 rounded-xl cursor-pointer hover:bg-black/5 transition-colors">
                         {isUploading ? <Loader2 size={18} className="animate-spin text-secondary" /> : <Upload size={18} className="text-secondary" />}
-                        <span className="text-sm text-secondary">Upload Avatar</span>
+                        <span className="text-sm text-secondary">Tải ảnh đại diện</span>
                         <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImageUpload(e, "avatar")} disabled={isUploading} />
                       </label>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Full Name</label>
+                    <label className="text-sm font-medium text-secondary">Họ và tên</label>
                     <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder={friend.name} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
                   </div>
                   
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Faculty / Major</label>
-                    <input type="text" value={faculty} onChange={(e) => setFaculty(e.target.value)} placeholder="e.g. Computer Science" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
+                    <label className="text-sm font-medium text-secondary">Khoa / Chuyên ngành</label>
+                    <input type="text" value={faculty} onChange={(e) => setFaculty(e.target.value)} placeholder="VD: Công nghệ Thông tin" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Course / Class</label>
-                    <input type="text" value={course} onChange={(e) => setCourse(e.target.value)} placeholder="e.g. Class of 2026" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
+                    <label className="text-sm font-medium text-secondary">Khóa / Lớp</label>
+                    <input type="text" value={course} onChange={(e) => setCourse(e.target.value)} placeholder="VD: Khóa 2026" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
                   </div>
                   
                   <button 
@@ -148,7 +148,7 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                     className="w-full py-2.5 mt-2 bg-primary text-white rounded-xl font-medium flex justify-center items-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-50"
                   >
                     {isSaving ? <Loader2 size={18} className="animate-spin" /> : null}
-                    Save Changes
+                    Lưu thay đổi
                   </button>
                 </div>
               )}
@@ -157,14 +157,14 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                 <>
                    {/* LEFT: Graduation Photo Upload */}
                    <div className="flex-1 flex flex-col gap-2">
-                    <label className="text-sm font-medium text-secondary">Graduation Photo</label>
+                    <label className="text-sm font-medium text-secondary">Ảnh Lễ Phục</label>
                     <div className="flex flex-col gap-4 h-full">
                       {gradPhotoUrl ? (
                         <div className="relative w-full h-full min-h-[240px] group">
                           <img src={gradPhotoUrl} alt="Graduation" className="w-full h-full rounded-xl object-cover border" />
                           <label className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl cursor-pointer">
                              <span className="text-white font-medium flex items-center gap-2">
-                               <Upload size={18} /> Change Photo
+                               <Upload size={18} /> Đổi ảnh
                              </span>
                              <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImageUpload(e, "graduation")} disabled={isUploading} />
                           </label>
@@ -172,7 +172,7 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                       ) : (
                         <label className="w-full h-full min-h-[240px] flex flex-col items-center justify-center gap-3 py-4 border-2 border-dashed border-black/20 rounded-xl cursor-pointer hover:bg-black/5 transition-colors">
                           {isUploading ? <Loader2 size={24} className="animate-spin text-secondary" /> : <Upload size={32} className="text-secondary opacity-50" />}
-                          <span className="text-sm text-secondary font-medium">Click to Upload Photo</span>
+                          <span className="text-sm text-secondary font-medium">Nhấn để tải ảnh lên</span>
                           <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImageUpload(e, "graduation")} disabled={isUploading} />
                         </label>
                       )}
@@ -183,13 +183,13 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                   <div className="flex-1 flex flex-col gap-5 justify-between">
                     <div className="flex flex-col gap-5">
                       <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium text-secondary">Graduation Date</label>
-                        <input type="text" value={gradDate} onChange={(e) => setGradDate(e.target.value)} placeholder="e.g. May 2026" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
+                        <label className="text-sm font-medium text-secondary">Ngày nhận bằng</label>
+                        <input type="text" value={gradDate} onChange={(e) => setGradDate(e.target.value)} placeholder="VD: Tháng 5 năm 2026" className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none" />
                       </div>
                       
                       <div className="flex flex-col gap-2 h-full">
-                        <label className="text-sm font-medium text-secondary">Caption</label>
-                        <textarea value={gradCaption} onChange={(e) => setGradCaption(e.target.value)} placeholder="Write something about this moment..." rows={5} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none resize-none flex-1" />
+                        <label className="text-sm font-medium text-secondary">Cảm nghĩ</label>
+                        <textarea value={gradCaption} onChange={(e) => setGradCaption(e.target.value)} placeholder="Viết vài dòng về khoảnh khắc này..." rows={5} className="px-3 py-2 text-sm bg-black/5 border border-transparent focus:border-black/20 rounded-xl outline-none resize-none flex-1" />
                       </div>
                     </div>
 
@@ -199,7 +199,7 @@ export function ProfileFormModal({ friendId, isOpen, onClose, context = "profile
                       className="w-full py-2.5 mt-2 bg-primary text-white rounded-xl font-medium flex justify-center items-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-50"
                     >
                       {isSaving ? <Loader2 size={18} className="animate-spin" /> : null}
-                      Save Changes
+                      Lưu thay đổi
                     </button>
                   </div>
                 </>

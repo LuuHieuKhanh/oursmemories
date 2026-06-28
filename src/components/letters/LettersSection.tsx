@@ -32,18 +32,18 @@ export function LettersSection() {
 
       <div className="text-center mb-8 md:mb-12 z-10">
         <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight inline-flex items-center gap-4">
-          Letters to us
+          Thư gửi thanh xuân
           <button 
             onClick={() => setIsFormOpen(true)}
             className="p-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-full transition-colors"
-            title="Write a letter"
+            title="Viết thư"
           >
             <Plus size={24} />
           </button>
         </h2>
         <p className="mt-4 text-secondary/80 text-lg md:text-xl leading-relaxed italic font-serif">
-          "Some words are easier to write <br className="md:hidden" />
-          than to say."
+          "Có những điều viết ra <br className="md:hidden" />
+          luôn dễ hơn là nói thành lời."
         </p>
       </div>
 
@@ -66,12 +66,12 @@ export function LettersSection() {
         </div>
       ) : (
         <div className="z-10 flex flex-col items-center justify-center p-12 bg-white/50 rounded-2xl border border-black/5 backdrop-blur-sm max-w-lg mx-auto">
-          <p className="text-secondary/60 text-lg mb-6 text-center">No one has written a letter yet.</p>
+          <p className="text-secondary/60 text-lg mb-6 text-center">Chưa có ai viết thư cả.</p>
           <button 
             onClick={() => setIsFormOpen(true)}
             className="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 flex items-center gap-2"
           >
-            <Plus size={18} /> Write the first letter
+            <Plus size={18} /> Viết lá thư đầu tiên
           </button>
         </div>
       )}

@@ -69,7 +69,7 @@ export function LetterModal({ friendIndex, isOpen, onClose, onNavigate }: Letter
                     {friend.imageSrc ? (
                       <img src={friend.imageSrc} alt="" className="w-full h-full object-cover" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-caption text-[10px] uppercase">Photo</div>
+                      <div className="w-full h-full flex items-center justify-center text-caption text-[10px] uppercase">Ảnh</div>
                     )}
                   </div>
                   <div className="font-handwriting text-3xl md:text-4xl text-primary">{friend.name}</div>
@@ -106,13 +106,13 @@ export function LetterModal({ friendIndex, isOpen, onClose, onNavigate }: Letter
                   onClick={() => onNavigate(friendIndex !== null && friendIndex > 0 ? friendIndex - 1 : friends.length - 1)}
                   className="flex items-center gap-2 hover:text-primary transition-colors uppercase tracking-widest text-xs"
                 >
-                  <ChevronLeft size={16} /> Previous Letter
+                  <ChevronLeft size={16} /> Thư trước
                 </button>
                 <button 
                   onClick={() => onNavigate(friendIndex !== null && friendIndex < friends.length - 1 ? friendIndex + 1 : 0)}
                   className="flex items-center gap-2 hover:text-primary transition-colors uppercase tracking-widest text-xs"
                 >
-                  Next Letter <ChevronRight size={16} />
+                  Thư sau <ChevronRight size={16} />
                 </button>
               </div>
             </div>

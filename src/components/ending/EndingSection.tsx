@@ -24,10 +24,10 @@ export function EndingSection() {
              {/* Placeholder for group photo */}
              <div className="flex flex-col items-center text-caption opacity-40">
                <span className="text-4xl mb-3">📸</span>
-               <span className="text-xs uppercase tracking-widest font-medium">Group Photo</span>
+               <span className="text-xs uppercase tracking-widest font-medium">Ảnh tập thể</span>
              </div>
           </div>
-          <p className="font-handwriting text-3xl md:text-4xl text-primary mt-6">Forever 5!</p>
+          <p className="font-handwriting text-3xl md:text-4xl text-primary mt-6">Mãi mãi là chúng ta!</p>
         </motion.div>
 
         {/* Quote */}
@@ -39,15 +39,15 @@ export function EndingSection() {
           className="mb-8"
         >
           <h2 className="font-serif italic text-3xl md:text-4xl lg:text-5xl text-primary leading-tight md:leading-relaxed max-w-3xl mx-auto">
-            "We didn't realize we were making memories, <br className="hidden md:block" />
-            we just knew we were having fun."
+            "Lúc đó nào có biết là đang tạo ra kỷ niệm, <br className="hidden md:block" />
+            chỉ biết là chúng mình đã rất vui."
           </h2>
         </motion.div>
       </div>
 
       {/* Footer */}
       <footer className="absolute bottom-0 w-full py-8 text-center text-secondary/50 text-xs font-medium">
-        <p>© 2026 Digital Graduation Album. Designed for memories.</p>
+        <p>© 2026 Kỷ yếu Kỹ thuật số. Nơi lưu giữ thanh xuân.</p>
       </footer>
     </section>
   );

@@ -78,7 +78,7 @@ export function GraduationPhotoModal({ friendIndex, isOpen, onClose, onNavigate 
                  {friend.graduationPhotoUrl ? (
                     <img src={friend.graduationPhotoUrl} alt="" className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-caption text-sm uppercase tracking-widest font-medium">No Photo</span>
+                    <span className="text-caption text-sm uppercase tracking-widest font-medium">Chưa có ảnh</span>
                   )}
               </div>
 

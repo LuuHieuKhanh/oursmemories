@@ -21,10 +21,10 @@ export function MeetTheFive() {
       <div className="absolute top-40 right-24 opacity-30 text-lg pointer-events-none">✈️</div>
 
       <div className="text-center mb-4 z-10">
-        <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight">Meet The Five</h2>
+        <h2 className="font-heading text-5xl md:text-6xl font-bold text-primary tracking-tight">Hội Ngũ Quái</h2>
         <p className="mt-2 text-secondary/80 text-lg md:text-xl leading-relaxed">
-          Five different personalities. <br />
-          One unforgettable journey.
+          Năm mảnh ghép khác biệt. <br />
+          Một thanh xuân rực rỡ.
         </p>
       </div>
 
@@ -62,7 +62,7 @@ export function MeetTheFive() {
         ))}
       </div>
 
-      <p className="mt-8 text-caption text-sm uppercase tracking-widest opacity-60">Click a card to read more</p>
+      <p className="mt-8 text-caption text-sm uppercase tracking-widest opacity-60">Nhấn vào thẻ để xem chi tiết</p>
 
       <IDCardModal 
         friendId={selectedFriendId} 
